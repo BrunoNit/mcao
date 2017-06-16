@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">MCAO</string>
+    <string name="action_settings">Settings</string>
+
+
+
+
+    <!-- STRING DAS ABAS -->
+    <string name="titulo_aba_carteira">CARTEIRA</string>
+    <string name="titulo_aba_cota">COTA</string>
+    <string name="titulo_aba_fechanento">FECHAMENTO</string>
+    <string name="linear_layout_manager">Linear Layout</string>
+    <string name="grid_layout_manager">Grid Layout</string>
+    <string name="element_text">codigo</string>
+</resources>

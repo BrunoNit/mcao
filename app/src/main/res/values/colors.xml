@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008aad</color>
+    <color name="colorPrimaryDark">#004a5c</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="colorMcaoGrey">#8b8887</color>
+    <color name="colorMcaoGreyLight">#aba7a5</color>
+    <color name="colorMcaoBlue">#008aad</color>
+    <color name="colorMcaoOragen">#fc6719</color>
+    <color name="colorMcaoBranco">#FFFFFF</color>
+</resources>

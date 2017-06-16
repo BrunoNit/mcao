@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="labelCustoUnitario">Custo unitário:</string>
+    <string name="labelCustoTotal">Custo total:</string>
+    <string name="labelQuantidade">Quantidade:</string>
+</resources>
