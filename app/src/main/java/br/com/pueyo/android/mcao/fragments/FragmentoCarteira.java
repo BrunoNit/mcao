@@ -8,6 +8,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import br.com.pueyo.android.mcao.R;
 import br.com.pueyo.android.mcao.adapters.CarteiraAdapter;
 import br.com.pueyo.android.mcao.decorators.DividerItemDecoration;
 import br.com.pueyo.android.mcao.dto.CardCarteiraAcaoDTO;
+import br.com.pueyo.android.mcao.listeners.RecyclerItemClickListener;
 
 /**
  * Created by 07669751770 on 16/06/17.
@@ -80,6 +82,20 @@ public class FragmentoCarteira extends Fragment {
         RecyclerView.ItemDecoration decoration = new DividerItemDecoration(d);
 
         carteiraRecycleView.addItemDecoration(decoration);
+
+        carteiraRecycleView.addOnItemTouchListener(new RecyclerItemClickListener(this.getContext(), carteiraRecycleView, new RecyclerItemClickListener
+                .OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Log.w(TAG,"Item Click da posição [" + position +"]");
+            }
+
+            @Override
+            public void onItemLongClick(View view, int position) {
+                Log.w(TAG,"Item Click Longo da posição [" + position +"]");
+
+            }
+        }));
 
 //        mLinearLayoutRadioButton = (RadioButton) rootView.findViewById(R.id.linear_layout_rb);
 //        mLinearLayoutRadioButton.setOnClickListener(new View.OnClickListener() {

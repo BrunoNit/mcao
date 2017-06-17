@@ -15,6 +15,7 @@ import br.com.pueyo.android.mcao.adapters.ViewPagerAdapter;
 import br.com.pueyo.android.mcao.fragments.FragmentoCarteira;
 import br.com.pueyo.android.mcao.fragments.FragmentoCota;
 import br.com.pueyo.android.mcao.fragments.FragmentoFechamento;
+import br.com.pueyo.android.mcao.fragments.FragmentoTransacao;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,14 +38,14 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
 
 
-       FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//       FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
     }
 
     private void configurarViewPager(ViewPager viewPager) {
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         viewPagerAdapter.addFragment(new FragmentoCarteira(), getResources().getString(R.string.titulo_aba_carteira));
         viewPagerAdapter.addFragment(new FragmentoCota(), getResources().getString(R.string.titulo_aba_cota));
         viewPagerAdapter.addFragment(new FragmentoFechamento(), getResources().getString(R.string.titulo_aba_fechanento));
+        viewPagerAdapter.addFragment(new FragmentoTransacao(),"TRANSAÇÕES");
 
         viewPager.setAdapter(viewPagerAdapter);
     }
