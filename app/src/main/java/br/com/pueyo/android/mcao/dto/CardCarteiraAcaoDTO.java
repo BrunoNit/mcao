@@ -9,7 +9,7 @@ import java.util.Locale;
  * Created by 07669751770 on 16/06/17.
  */
 
-public class CardCarteiraAcaoDTO {
+public class CardCarteiraAcaoDTO extends DTO{
 
     private String codigoAcao;
     private double custoTotal;

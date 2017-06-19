@@ -1,75 +1,56 @@
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<android.support.v7.widget.CardView
+    xmlns:card_view="http://schemas.android.com/apk/lib/br.com.pueyo.android.mcao"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/card_view"
+    android:layout_width="150dp"
     android:layout_height="wrap_content"
-    android:stretchColumns="0">
-    <TableRow >
+    card_view:cardUseCompatPadding="true"
+    card_view:cardCornerRadius="15dp"
+    android:layout_marginBottom="16dp"
+    android:background="@color/colorMcaoGreyLight"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
         <TextView
             android:id="@+id/codAcao"
             style="@style/AppTheme.Mcao.TextoCodigoGrande"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:text="@string/element_text"
-            android:layout_gravity="left"/>
-    </TableRow>
-            <TableRow>
-                <TextView
-                    android:id="@+id/labelValorTotal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/codAcao"
-                    android:layout_alignParentTop="true"
-                    style="@style/AppTheme.Mcao.TextoLabelCard"
-                    android:text="@string/labelCustoTotal"/>
+            android:layout_gravity="fill_horizontal"/>
 
-                <TextView
-                    android:id="@+id/custoTotal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorMcaoGrey"
-                    android:text="@string/element_text"
-                    style="@style/AppTheme.Mcao.TextoLabel"
-                    android:layout_alignParentTop="true"
-                    android:layout_toRightOf="@id/labelValorTotal"/>
+        <TextView
+            android:id="@+id/custoTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorMcaoBranco"
+            android:text="@string/element_text"
+            style="@style/AppTheme.Mcao.TextoLabel"
+            android:layout_below="@id/codAcao"/>
 
-            </TableRow>
-            <TableRow>
-                <TextView
-                    android:id="@+id/labelValorUnitario"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/codAcao"
-                    android:layout_below="@id/labelValorTotal"
-                    style="@style/AppTheme.Mcao.TextoLabelCard"
-                    android:text="@string/labelCustoUnitario"/>
 
-                <TextView
-                    android:id="@+id/custoUnitario"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorMcaoGrey"
-                    android:text="@string/element_text"
-                    style="@style/AppTheme.Mcao.TextoLabel"
-                    android:layout_toRightOf="@id/labelValorUnitario"
-                    android:layout_below="@id/labelValorTotal"/>
-            </TableRow>
-            <TableRow>
-                <TextView
-                    android:id="@+id/labelQuantidade"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/AppTheme.Mcao.TextoLabelCard"
-                    android:text="@string/labelQuantidade"
-                    android:layout_toRightOf="@id/codAcao"
-                    android:layout_below="@id/labelValorUnitario"/>
+        <TextView
+            android:id="@+id/custoUnitario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorMcaoBranco"
+            android:text="@string/element_text"
+            style="@style/AppTheme.Mcao.TextoLabel"
+            android:layout_below="@id/custoTotal"/>
 
-                <TextView
-                    android:id="@+id/quantidade"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorMcaoGrey"
-                    android:text="@string/element_text"
-                    style="@style/AppTheme.Mcao.TextoLabel"
-                    android:layout_toRightOf="@id/labelQuantidade"
-                    android:layout_below="@id/labelValorUnitario"/>
-            </TableRow>
-</TableLayout>
+
+        <TextView
+            android:id="@+id/quantidade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorMcaoBranco"
+            android:text="@string/element_text"
+            style="@style/AppTheme.Mcao.TextoLabel"
+            android:layout_below="@id/custoUnitario"/>
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

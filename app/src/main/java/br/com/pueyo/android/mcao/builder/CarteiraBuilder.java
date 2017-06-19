@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.pueyo.android.mcao.dto.CardCarteiraAcaoDTO;
+import br.com.pueyo.android.mcao.dto.DTO;
 
 /**
  * Created by 07669751770 on 16/06/17.
  */
 
-public class CarteiraBuilder<T extends CardCarteiraAcaoDTO> {
+public class CarteiraBuilder<T extends DTO> extends Builder<T>{
 
    List<T> acoes = new ArrayList<T>();
 
@@ -30,9 +31,9 @@ public class CarteiraBuilder<T extends CardCarteiraAcaoDTO> {
     }
 
     public T[] build(){
-        CardCarteiraAcaoDTO[] c = new CardCarteiraAcaoDTO[acoes.size()];
+        DTO[] c = new CardCarteiraAcaoDTO[acoes.size()];
         int i = 0;
-        for(CardCarteiraAcaoDTO card: acoes){
+        for(DTO card: acoes){
             c[i] = card;
             i++;
         }

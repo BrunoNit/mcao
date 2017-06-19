@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_comprar">Comprar</string>
+    <string name="menu_vender">Vender</string>
+    <string name="menu_dividendos">Dividendos</string>
+    <string name="menu_jscp">Juros Sobre Capital</string>
+    <string name="menu_agrupamento">Agrupamento</string>
+    <string name="menu_desdobramento">Desdobramento</string>
+</resources>

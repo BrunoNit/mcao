@@ -1,5 +1,6 @@
 package br.com.pueyo.android.mcao.fragments;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,12 +9,15 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
+import android.widget.TextView;
 
+import br.com.pueyo.android.mcao.DetalhesAcaoActivity;
 import br.com.pueyo.android.mcao.builder.CarteiraBuilder;
 import br.com.pueyo.android.mcao.R;
 import br.com.pueyo.android.mcao.adapters.CarteiraAdapter;
@@ -55,7 +59,7 @@ public class FragmentoCarteira extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable final Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragmento_carteira, container, false);
 
@@ -63,13 +67,15 @@ public class FragmentoCarteira extends Fragment {
 
         carteiraRecycleView = (RecyclerView) rootView.findViewById(R.id.carteira_recycler_view);
 
-        carteiraLayoutManager = new LinearLayoutManager(getActivity());
+        carteiraLayoutManager = new GridLayoutManager(getActivity(),4);
 
-        mCurrentLayoutManagerType = LayoutManagerType.LINEAR_LAYOUT_MANAGER;
+        mCurrentLayoutManagerType = LayoutManagerType.GRID_LAYOUT_MANAGER;
 
         if(savedInstanceState != null){
             mCurrentLayoutManagerType = (LayoutManagerType) savedInstanceState.getSerializable(KEY_LAYOUT_MANAGER);
         }
+
+        carteiraRecycleView.setHasFixedSize(true);
 
         setRecyclerViewLayoutManager(mCurrentLayoutManagerType);
 
@@ -77,17 +83,22 @@ public class FragmentoCarteira extends Fragment {
 
         carteiraRecycleView.setAdapter(carteiraAdapter);
 
-        Drawable d = ContextCompat.getDrawable(getActivity(),R.drawable.line_divider);
-
-        RecyclerView.ItemDecoration decoration = new DividerItemDecoration(d);
-
-        carteiraRecycleView.addItemDecoration(decoration);
+//        Drawable d = ContextCompat.getDrawable(getActivity(),R.drawable.line_divider);
+//
+//        RecyclerView.ItemDecoration decoration = new DividerItemDecoration(d);
+//
+//        carteiraRecycleView.addItemDecoration(decoration);
 
         carteiraRecycleView.addOnItemTouchListener(new RecyclerItemClickListener(this.getContext(), carteiraRecycleView, new RecyclerItemClickListener
                 .OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                Log.w(TAG,"Item Click da posição [" + position +"]");
+                Intent i = new Intent(getActivity(),DetalhesAcaoActivity.class);
+                TextView tv = (TextView) view.findViewById(R.id.codAcao);
+                String codAcao = getResources().getString(R.string.param_cod_acao);
+                i.putExtra(codAcao,tv.getText());
+                startActivity(i);
+
             }
 
             @Override
@@ -152,7 +163,8 @@ public class FragmentoCarteira extends Fragment {
     private CardCarteiraAcaoDTO[] criarBase(){
 
         CardCarteiraAcaoDTO[] carteira = new CarteiraBuilder<CardCarteiraAcaoDTO>().addAcao("LIXC4",12340.0,1000).
-                addAcao("ELET3",27456.56,900).addAcao("EMBR3",15678.0,700).build();
+                addAcao("ELET3",27456.56,900).addAcao("EMBR3",15678.0,700).addAcao("EMBR4",15678.0,700).addAcao("EMBR5",15678.0,700).addAcao("EMBR6",15678.0,700)
+                .addAcao("EMBR19",15678.0,700).addAcao("EMBR8",15678.0,700).addAcao("EMBR7",15678.0,700).build();
         return carteira;
     }
 

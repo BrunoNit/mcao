@@ -25,6 +25,11 @@
             android:label="@string/app_name"
             android:theme="@style/AppTheme.Mcao">
         </activity>
+        <activity
+            android:name=".DetalhesAcaoActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.Mcao">
+        </activity>
     </application>
 
 </manifest>

@@ -2,9 +2,13 @@ package br.com.pueyo.android.mcao.adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.TextView;
 
 import br.com.pueyo.android.mcao.R;
@@ -13,15 +17,19 @@ import br.com.pueyo.android.mcao.dto.CardCarteiraAcaoDTO;
 /**
  * Provide views to RecyclerView with data from mDataSet.
  */
-public class CarteiraAdapter extends RecyclerView.Adapter<CarteiraAdapter.ViewHolder> {
+public class CarteiraAdapter extends RecyclerView.Adapter<CarteiraAdapter.ViewHolder>  {
     private static final String TAG = "CarteiraAdapter";
 
     private CardCarteiraAcaoDTO[] mDataSet;
+    private AdapterView.AdapterContextMenuInfo info;
+
+    public CarteiraAdapter() {
+    }
 
     /**
      * Provide a reference to the type of views that you are using (custom ViewHolder)
      */
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener{
         private final TextView codAcao;
         private final TextView custoTotal;
         private final TextView custoUnitario;
@@ -31,17 +39,18 @@ public class CarteiraAdapter extends RecyclerView.Adapter<CarteiraAdapter.ViewHo
         public ViewHolder(View v) {
             super(v);
             // Define click listener for the ViewHolder's View.
-            v.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Log.d(TAG, "Element " + getAdapterPosition() + " clicked.");
-                }
-            });
+//            v.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    Log.d(TAG, "Element " + getAdapterPosition() + " clicked.");
+//                }
+//            });
 
             codAcao = (TextView) v.findViewById(R.id.codAcao);
             custoTotal = (TextView) v.findViewById(R.id.custoTotal);
             custoUnitario = (TextView) v.findViewById(R.id.custoUnitario);
             quantidade = (TextView) v.findViewById(R.id.quantidade);
+
         }
 
         public TextView getCodAcao() {
@@ -58,6 +67,12 @@ public class CarteiraAdapter extends RecyclerView.Adapter<CarteiraAdapter.ViewHo
 
         public TextView getQuantidade() {
             return quantidade;
+        }
+
+
+        @Override
+        public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+            Log.w(TAG, "###### onCreateContextMenu #######");
         }
     }
 
