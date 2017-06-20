@@ -33,7 +33,7 @@ public class FragmentoCarteira extends Fragment {
 
     private static final String TAG = "RecyclerViewFragment";
     private static final String KEY_LAYOUT_MANAGER = "layoutManager";
-    private static final int SPAN_COUNT = 2;
+    private static final int SPAN_COUNT = 3;
     private static final int DATASET_COUNT = 60;
 
     private enum LayoutManagerType {
@@ -82,6 +82,8 @@ public class FragmentoCarteira extends Fragment {
         carteiraAdapter = new CarteiraAdapter(criarBase());
 
         carteiraRecycleView.setAdapter(carteiraAdapter);
+
+
 
 //        Drawable d = ContextCompat.getDrawable(getActivity(),R.drawable.line_divider);
 //

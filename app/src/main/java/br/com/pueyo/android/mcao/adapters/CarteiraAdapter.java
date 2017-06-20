@@ -1,5 +1,7 @@
 package br.com.pueyo.android.mcao.adapters;
 
+import android.graphics.Color;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -89,10 +91,10 @@ public class CarteiraAdapter extends RecyclerView.Adapter<CarteiraAdapter.ViewHo
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         // Create a new view.
-        View v = LayoutInflater.from(viewGroup.getContext())
+        CardView v = (CardView) LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.card_carteira_acao, viewGroup, false);
 
-        return new ViewHolder(v);
+      return new ViewHolder(v);
     }
 
     // Replace the contents of a view (invoked by the layout manager)

@@ -1,4 +1,4 @@
-<resources>
+<resources  xmlns:card_view="http://schemas.android.com/apk/lib/br.com.pueyo.android.mcao">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -53,8 +53,34 @@
         <item name="android:layout_gravity">center</item>
     </style>
 
-    <style name="AppTheme.Mcao.CartaoAcao">
-        <item name="android:background">@color/colorMcaoGreyLight</item>
+    <style name="AppTheme.Mcao.CardView">
+    </style>
+
+
+    <style name="AppTheme.Mcao.CardView.Label" parent="AppTheme.Mcao.CardView">
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="AppTheme.Mcao.CardView.Label.textoSimplesValores" parent="AppTheme.Mcao.CardView.Label">
+        <item name="android:textColor">@color/colorMcaoBranco</item>
+    </style>
+
+    <style name="AppTheme.Mcao.CardView.Titulo" parent="AppTheme.Mcao.CardView">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/colorMcaoOragen</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+
+    <style name="AppTheme.Mcao.DialogOperacao">
+        <item name="android:background">@color/colorMcaoBlue</item>
 
     </style>
+
+    <style name="AppTheme.Mcao.DialogOperacao.Label" parent="AppTheme.Mcao.DialogOperacao">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/colorMcaoBranco</item>
+    </style>
+
 </resources>
