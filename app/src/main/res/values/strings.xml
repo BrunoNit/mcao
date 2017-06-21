@@ -20,4 +20,5 @@
     <string name="qtde_operacao">Quantidade</string>
     <string name="valor_liquido">Valor Líquido</string>
     <string name="valor_taxas">Taxas</string>
+    <string name="valor_cotacao">Cotação</string>
 </resources>

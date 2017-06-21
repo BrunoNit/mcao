@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center">
 
-        <TableRow android:background="@color/colorMcaoBranco"
+        <TableRow android:background="@drawable/rounded_border_edit_text"
             android:gravity="center">
         <TextView
             android:id="@+id/codAcao"

@@ -26,6 +26,7 @@ import br.com.pueyo.android.mcao.decorators.DividerItemDecoration;
 import br.com.pueyo.android.mcao.dto.TipoOperacao;
 import br.com.pueyo.android.mcao.dto.TransacaoDTO;
 import br.com.pueyo.android.mcao.dto.operacoes.CompraVista;
+import br.com.pueyo.android.mcao.dto.operacoes.OperacaoDTO;
 import br.com.pueyo.android.mcao.fragments.operacoes.OperacaoCompra;
 import br.com.pueyo.android.mcao.listeners.DialogoNotificavel;
 
@@ -41,6 +42,8 @@ public class DetalhesAcaoActivity  extends AppCompatActivity implements DialogoN
     private RecyclerView.LayoutManager mLayoutManager;
     private TransacaoAdapter transacoAdapter;
 
+    private String cod;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +52,7 @@ public class DetalhesAcaoActivity  extends AppCompatActivity implements DialogoN
         Bundle extras = getIntent().getExtras();
 
 
-        String cod = null;
+//        String cod = null;
         if(extras != null){
             cod = extras.getString(getResources().getString(R.string.param_cod_acao));
         }
@@ -98,6 +101,7 @@ public class DetalhesAcaoActivity  extends AppCompatActivity implements DialogoN
         if (id == R.id.operacao_compra) {
             Log.w(TAG,"COMPRA");
             OperacaoCompra operacaoCompra = new OperacaoCompra();
+            operacaoCompra.setArguments(getIntent().getExtras());
             operacaoCompra.show(getSupportFragmentManager(),TAG);
             return true;
         }
@@ -131,20 +135,9 @@ public class DetalhesAcaoActivity  extends AppCompatActivity implements DialogoN
 
 
     @Override
-    public void onDialogPositiveClick(DialogFragment dialog) {
-        View v = dialog.getView();
-        EditText edtCodigo = (EditText) v.findViewById(R.id.cmp_codigo_value);
-        EditText edtData = (EditText) v.findViewById(R.id.cmp_data_value);
-        EditText edtQuantidade = (EditText) v.findViewById(R.id.cmp_qtde_value);
-        EditText edtValorLiquido = (EditText) v.findViewById(R.id.cmp_valor_liquido_value);
-        EditText edtTaxas = (EditText) v.findViewById(R.id.cmp_valor_taxas_value);
+    public void onDialogPositiveClick(DialogFragment dialog, OperacaoDTO operacaoDTO) {
 
-        Log.w(TAG, "###### CODIGO: " + edtCodigo.getText().toString());
-
-
-
-
-
+        Log.w(TAG, operacaoDTO.toString());
 
     }
 

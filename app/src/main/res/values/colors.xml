@@ -10,4 +10,5 @@
     <color name="colorMcaoOragen">#fc6719</color>
     <color name="colorMcaoBlueLight">#b7ebf9</color>
     <color name="colorMcaoBranco">#FFFFFF</color>
+    <color name="colorMcaoWhite">@color/colorMcaoBranco</color>
 </resources>

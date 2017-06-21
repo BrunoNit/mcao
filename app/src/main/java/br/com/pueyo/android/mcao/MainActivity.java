@@ -7,6 +7,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,9 +17,12 @@ import br.com.pueyo.android.mcao.fragments.FragmentoCarteira;
 import br.com.pueyo.android.mcao.fragments.FragmentoCota;
 import br.com.pueyo.android.mcao.fragments.FragmentoFechamento;
 import br.com.pueyo.android.mcao.fragments.FragmentoTransacao;
+import br.com.pueyo.android.mcao.tos.McaoObjects;
+import br.com.pueyo.android.mcao.tos.objects.Transacao;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG = MainActivity.class.getName();
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
@@ -37,15 +41,6 @@ public class MainActivity extends AppCompatActivity {
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
 
-
-//       FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
     }
 
     private void configurarViewPager(ViewPager viewPager) {

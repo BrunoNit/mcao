@@ -1,5 +1,11 @@
 package br.com.pueyo.android.mcao.dto.operacoes;
 
+import android.util.Log;
+import android.view.View;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import br.com.pueyo.android.mcao.dto.TipoOperacao;
@@ -8,7 +14,8 @@ import br.com.pueyo.android.mcao.dto.TipoOperacao;
  * Created by 07669751770 on 20/06/17.
  */
 
-public class OperacaoDTO {
+public abstract class OperacaoDTO {
+    private static final String TAG = OperacaoDTO.class.getName();
     private Date data;
     private String codigo;
     private TipoOperacao tipo;
@@ -65,4 +72,25 @@ public class OperacaoDTO {
     public void setData(Date data) {
         this.data = data;
     }
+
+    protected double converteDouble(String s) {
+        return Double.valueOf(s);
+    }
+
+    protected Integer converterQuantidade(String s) {
+        return Integer.valueOf(s);
+    }
+
+    protected Date converteData(String data){
+        DateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            return sdf.parse(data);
+        } catch (ParseException e) {
+            Log.e(TAG, "Erro ao fazer o parser da data", e);
+        }
+        return null;
+    }
+
+
+    public abstract OperacaoDTO gerarOperacaoFromView(View view);
 }

@@ -1,7 +1,7 @@
 <resources  xmlns:card_view="http://schemas.android.com/apk/lib/br.com.pueyo.android.mcao">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -26,7 +26,7 @@
         <item name="android:background">@color/colorMcaoBranco</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Light" />
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="AppTheme.Mcao.TextoLabelCard" parent="TextAppearance.StatusBar.EventContent.Title">
@@ -67,20 +67,31 @@
 
     <style name="AppTheme.Mcao.CardView.Titulo" parent="AppTheme.Mcao.CardView">
         <item name="android:textSize">20sp</item>
-        <item name="android:textColor">@color/colorMcaoOragen</item>
+        <item name="android:textColor">@color/colorMcaoBlue</item>
         <item name="android:textStyle">bold</item>
         <item name="android:gravity">center</item>
     </style>
 
 
     <style name="AppTheme.Mcao.DialogOperacao">
-        <item name="android:background">@color/colorMcaoBlue</item>
+        <item name="android:background">@color/colorMcaoWhite</item>
+    </style>
+
+    <style name="AppTheme.Mcao.DialogOperacao.TextView" parent="AppTheme.Mcao.DialogOperacao">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/colorMcaoBlue</item>
+        <item name="android:textStyle">bold</item>
 
     </style>
 
-    <style name="AppTheme.Mcao.DialogOperacao.Label" parent="AppTheme.Mcao.DialogOperacao">
-        <item name="android:textSize">13sp</item>
-        <item name="android:textColor">@color/colorMcaoBranco</item>
+    <style name="AppTheme.Mcao.DialogOperacao.EditText" parent="AppTheme.Mcao.DialogOperacao">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/colorMcaoOragen</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:background">@drawable/rounded_border_edit_text</item>
+        <item name="android:textColorHint">@color/colorMcaoBlueLight
+        </item>
+
     </style>
 
 </resources>

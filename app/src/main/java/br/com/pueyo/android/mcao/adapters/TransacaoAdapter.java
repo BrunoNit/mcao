@@ -27,7 +27,7 @@ public class TransacaoAdapter extends RecyclerView.Adapter<TransacaoAdapter.View
         TransacaoDTO transacao = dataSet[position];
 
         holder.getTxtData().setText(transacao.getDataFormatada("dd/MM/yyyy"));
-        holder.getTxtCodigo().setText(transacao.getCodigo().toString());
+//        holder.getTxtCodigo().setText(transacao.getCodigo().toString());
         holder.getTxtQuantidade().setText(transacao.getQuantidade().toString());
         holder.getTxtTipoOperacao().setText(transacao.getTipo().toString());
         holder.getTxtValor().setText(transacao.getValorFormatado());
@@ -62,7 +62,7 @@ public class TransacaoAdapter extends RecyclerView.Adapter<TransacaoAdapter.View
             super(itemView);
 
             this.txtData = (TextView) itemView.findViewById(R.id.row_det_trans_data);
-            this.txtCodigo = (TextView) itemView.findViewById(R.id.row_det_trans_codigo);
+//            this.txtCodigo = (TextView) itemView.findViewById(R.id.row_det_trans_codigo);
             this.txtTipoOperacao = (TextView) itemView.findViewById(R.id.row_det_trans_tipo);
             this.txtQuantidade = (TextView) itemView.findViewById(R.id.row_det_trans_qtde);
             this.txtValor = (TextView) itemView.findViewById(R.id.row_det_trans_valor);
@@ -115,6 +115,10 @@ public class TransacaoAdapter extends RecyclerView.Adapter<TransacaoAdapter.View
 
         public void setTxtData(TextView txtData) {
             this.txtData = txtData;
+        }
+
+        public void setBackGroundColor(int color){
+            this.itemView.setBackgroundColor(color);
         }
     }
 

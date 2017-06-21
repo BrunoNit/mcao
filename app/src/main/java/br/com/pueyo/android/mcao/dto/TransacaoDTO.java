@@ -11,11 +11,16 @@ import java.util.Currency;
 import java.util.Date;
 import java.util.Locale;
 
+import br.com.pueyo.android.mcao.tos.McaoObjects;
+
+
 /**
  * Created by 07669751770 on 19/06/17.
  */
 
 public class TransacaoDTO extends DTO{
+
+
 
     private Date data;
 
