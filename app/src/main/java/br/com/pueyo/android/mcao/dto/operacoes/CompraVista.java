@@ -3,6 +3,7 @@ package br.com.pueyo.android.mcao.dto.operacoes;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -94,7 +95,7 @@ public class CompraVista extends OperacaoDTO {
 
 
 
-        EditText edtCodigo = (EditText) v.findViewById(R.id.cmp_codigo_value);
+        TextView edtCodigo = (TextView) v.findViewById(R.id.cmp_codigo_value);
         EditText edtData = (EditText) v.findViewById(R.id.cmp_data_value);
         EditText edtQuantidade = (EditText) v.findViewById(R.id.cmp_qtde_value);
         EditText edtCotacao = (EditText) v.findViewById(R.id.cmp_cotacao_value);

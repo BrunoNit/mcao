@@ -4,22 +4,16 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import br.com.pueyo.android.mcao.R;
 import br.com.pueyo.android.mcao.dto.operacoes.CompraVista;
-import br.com.pueyo.android.mcao.dto.operacoes.OperacaoDTO;
 import br.com.pueyo.android.mcao.listeners.DialogoNotificavel;
 
 
@@ -27,9 +21,9 @@ import br.com.pueyo.android.mcao.listeners.DialogoNotificavel;
  * Created by 07669751770 on 20/06/17.
  */
 
-public class OperacaoCompra extends DialogFragment{
+public class DialogOperacaoCompra extends DialogFragment{
 
-    private static final String TAG = OperacaoCompra.class.getName();
+    private static final String TAG = DialogOperacaoCompra.class.getName();
     private View dialogView;
 
 
@@ -55,14 +49,14 @@ public class OperacaoCompra extends DialogFragment{
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         CompraVista compraVista = (CompraVista) new CompraVista().gerarOperacaoFromView(dialogView);
-                                        listener.onDialogPositiveClick(OperacaoCompra.this, compraVista);
+                                        listener.onDialogPositiveClick(DialogOperacaoCompra.this, compraVista);
                                         dialog.cancel();
                                     }
                             }).setNegativeButton(R.string.btn_cancelar,
                 new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        listener.onDialogNegativeClick(OperacaoCompra.this);
+                                        listener.onDialogNegativeClick(DialogOperacaoCompra.this);
                                         dialog.cancel();
                                     }});
 

@@ -1,20 +1,14 @@
 package br.com.pueyo.android.mcao;
 
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -22,13 +16,14 @@ import java.util.Date;
 
 import br.com.pueyo.android.mcao.adapters.TransacaoAdapter;
 import br.com.pueyo.android.mcao.builder.TransacaoBuilder;
-import br.com.pueyo.android.mcao.decorators.DividerItemDecoration;
 import br.com.pueyo.android.mcao.dto.TipoOperacao;
 import br.com.pueyo.android.mcao.dto.TransacaoDTO;
-import br.com.pueyo.android.mcao.dto.operacoes.CompraVista;
 import br.com.pueyo.android.mcao.dto.operacoes.OperacaoDTO;
-import br.com.pueyo.android.mcao.fragments.operacoes.OperacaoCompra;
+import br.com.pueyo.android.mcao.fragments.operacoes.DialogOperacaoCompra;
 import br.com.pueyo.android.mcao.listeners.DialogoNotificavel;
+import br.com.pueyo.android.mcao.tos.objects.CompraVista;
+import br.com.pueyo.android.mcao.tos.objects.Titulo;
+import br.com.pueyo.android.mcas.bussiness.CompraFactory;
 
 /**
  * Created by 07669751770 on 19/06/17.
@@ -71,10 +66,10 @@ public class DetalhesAcaoActivity  extends AppCompatActivity implements DialogoN
         transacoAdapter = new TransacaoAdapter(dataSet);
         transacoesRecyclerView.setAdapter(transacoAdapter);
 
-        Drawable d = ContextCompat.getDrawable(this,R.drawable.line_divider);
-
-        RecyclerView.ItemDecoration decoration = new DividerItemDecoration(d);
-        transacoesRecyclerView.addItemDecoration(decoration);
+//        Drawable d = ContextCompat.getDrawable(this,R.drawable.line_divider);
+//
+//        RecyclerView.ItemDecoration decoration = new DividerItemDecoration(d);
+//        transacoesRecyclerView.addItemDecoration(decoration);
     }
 
     private TransacaoDTO[] buscarTransacoes(String cod) {
@@ -82,7 +77,7 @@ public class DetalhesAcaoActivity  extends AppCompatActivity implements DialogoN
 
         Date dataHoje = new Date();
         TransacaoBuilder<TransacaoDTO> builder = new TransacaoBuilder<TransacaoDTO>();
-        for(int i = 0; i < 37; i++){
+        for(int i = 0; i < 7; i++){
                 builder = builder.addTransacao(dataHoje,cod, TipoOperacao.COMPRA,100 * i, 130.0 * i,0.0);
         }
         return builder.build();
@@ -100,7 +95,7 @@ public class DetalhesAcaoActivity  extends AppCompatActivity implements DialogoN
 
         if (id == R.id.operacao_compra) {
             Log.w(TAG,"COMPRA");
-            OperacaoCompra operacaoCompra = new OperacaoCompra();
+            DialogOperacaoCompra operacaoCompra = new DialogOperacaoCompra();
             operacaoCompra.setArguments(getIntent().getExtras());
             operacaoCompra.show(getSupportFragmentManager(),TAG);
             return true;
@@ -137,7 +132,22 @@ public class DetalhesAcaoActivity  extends AppCompatActivity implements DialogoN
     @Override
     public void onDialogPositiveClick(DialogFragment dialog, OperacaoDTO operacaoDTO) {
 
-        Log.w(TAG, operacaoDTO.toString());
+        br.com.pueyo.android.mcao.dto.operacoes.CompraVista c = (br.com.pueyo.android.mcao.dto.operacoes.CompraVista) operacaoDTO;
+
+        CompraVista compraVista = new CompraVista();
+
+        Titulo titulo = new Titulo();
+        titulo.setCodigoBovespa(operacaoDTO.getCodigo());
+        compraVista.setTitulo(titulo);
+
+        compraVista.setTaxas(new BigDecimal(c.getTaxas()));
+        compraVista.setDataTransacao(c.getData());
+        compraVista.setQuantidade(new BigInteger(c.getQuantidade().toString()));
+        compraVista.setValorUnitario(new BigDecimal(c.getValorUnitario()));
+
+        CompraFactory.getCompraVistaBO().enviarCompraVista(compraVista);
+
+//        Log.w(TAG, operacaoDTO.toString());
 
     }
 
