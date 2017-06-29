@@ -5,4 +5,23 @@ package br.com.pueyo.android.mcao.tos.objects;
  */
 
 public class Titulo {
+
+    private String isin;
+    private String codigoBovespa;
+
+    public String getIsin() {
+        return isin;
+    }
+
+    public void setIsin(String isin) {
+        this.isin = isin;
+    }
+
+    public String getCodigoBovespa() {
+        return codigoBovespa;
+    }
+
+    public void setCodigoBovespa(String codigoBovespa) {
+        this.codigoBovespa = codigoBovespa;
+    }
 }

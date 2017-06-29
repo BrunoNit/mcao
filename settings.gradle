@@ -1,1 +1,1 @@
-include ':app', ':mcao-transfer-object'
+include ':app', ':mcao-transfer-object', ':mcao-bussiness-objects'

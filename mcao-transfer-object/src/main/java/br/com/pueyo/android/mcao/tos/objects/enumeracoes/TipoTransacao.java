@@ -1,4 +1,4 @@
-package br.com.pueyo.android.mcao.tos.objects;
+package br.com.pueyo.android.mcao.tos.objects.enumeracoes;
 
 import br.com.pueyo.android.mcao.tos.objects.enumeracoes.OperacaoCarteira;
 
@@ -9,22 +9,31 @@ import br.com.pueyo.android.mcao.tos.objects.enumeracoes.OperacaoCarteira;
 public enum  TipoTransacao {
 
     COMPRA("C", OperacaoCarteira.SUBTRACAO),
-    VENDA("V"),
-    DIVIDENDO("D"),
-    JSCP("J"),
-    AGRUPAMENTO("G"),
-    DESMEMBRAMENTO("D");
+    VENDA("V", OperacaoCarteira.SOMA),
+    DIVIDENDO("D", OperacaoCarteira.SOMA),
+    JSCP("J", OperacaoCarteira.SOMA),
+    AGRUPAMENTO("G", OperacaoCarteira.NADA),
+    DESMEMBRAMENTO("D", OperacaoCarteira.NADA);
 
     private String cod;
+    private OperacaoCarteira operacao;
 
-    private TipoTransacao(String cod){
-
+    private TipoTransacao(String cod, OperacaoCarteira operacao){
         this.cod = cod;
+        this.operacao = operacao;
     }
 
 
     @Override
     public String toString() {
         return this.cod;
+    }
+
+    public String getCod() {
+        return cod;
+    }
+
+    public OperacaoCarteira getOperacao() {
+        return operacao;
     }
 }
