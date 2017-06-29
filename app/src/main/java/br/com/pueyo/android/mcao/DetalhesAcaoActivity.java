@@ -20,6 +20,8 @@ import br.com.pueyo.android.mcao.dto.TipoOperacao;
 import br.com.pueyo.android.mcao.dto.TransacaoDTO;
 import br.com.pueyo.android.mcao.dto.operacoes.OperacaoDTO;
 import br.com.pueyo.android.mcao.fragments.operacoes.DialogOperacaoCompra;
+import br.com.pueyo.android.mcao.fragments.operacoes.DialogOperacaoVenda;
+import br.com.pueyo.android.mcao.fragments.operacoes.DialogoOperacao;
 import br.com.pueyo.android.mcao.listeners.DialogoNotificavel;
 import br.com.pueyo.android.mcao.tos.objects.CompraVista;
 import br.com.pueyo.android.mcao.tos.objects.Titulo;
@@ -103,6 +105,10 @@ public class DetalhesAcaoActivity  extends AppCompatActivity implements DialogoN
 
         if (id == R.id.operacao_venda) {
             Log.w(TAG,"VENDA");
+            DialogoOperacao<br.com.pueyo.android.mcao.dto.operacoes.CompraVista> operacaoVenda = new DialogoOperacao<br.com.pueyo.android.mcao.dto.operacoes.CompraVista>();
+            operacaoVenda.setLayout(R.layout.dialog_venda);
+            operacaoVenda.setArguments(getIntent().getExtras());
+            operacaoVenda.show(getSupportFragmentManager(),TAG);
             return true;
         }
 
