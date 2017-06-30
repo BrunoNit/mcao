@@ -19,8 +19,9 @@ import br.com.pueyo.android.mcao.builder.TransacaoBuilder;
 import br.com.pueyo.android.mcao.dto.TipoOperacao;
 import br.com.pueyo.android.mcao.dto.TransacaoDTO;
 import br.com.pueyo.android.mcao.dto.operacoes.OperacaoDTO;
+import br.com.pueyo.android.mcao.dto.operacoes.OperacaoVista;
+import br.com.pueyo.android.mcao.dto.operacoes.VendaVista;
 import br.com.pueyo.android.mcao.fragments.operacoes.DialogOperacaoCompra;
-import br.com.pueyo.android.mcao.fragments.operacoes.DialogOperacaoVenda;
 import br.com.pueyo.android.mcao.fragments.operacoes.DialogoOperacao;
 import br.com.pueyo.android.mcao.listeners.DialogoNotificavel;
 import br.com.pueyo.android.mcao.tos.objects.CompraVista;
@@ -105,7 +106,7 @@ public class DetalhesAcaoActivity  extends AppCompatActivity implements DialogoN
 
         if (id == R.id.operacao_venda) {
             Log.w(TAG,"VENDA");
-            DialogoOperacao<br.com.pueyo.android.mcao.dto.operacoes.CompraVista> operacaoVenda = new DialogoOperacao<br.com.pueyo.android.mcao.dto.operacoes.CompraVista>();
+            DialogoOperacao<br.com.pueyo.android.mcao.dto.operacoes.VendaVista> operacaoVenda = new DialogoOperacao<br.com.pueyo.android.mcao.dto.operacoes.VendaVista>();
             operacaoVenda.setLayout(R.layout.dialog_venda);
             operacaoVenda.setArguments(getIntent().getExtras());
             operacaoVenda.show(getSupportFragmentManager(),TAG);
@@ -138,20 +139,29 @@ public class DetalhesAcaoActivity  extends AppCompatActivity implements DialogoN
     @Override
     public void onDialogPositiveClick(DialogFragment dialog, OperacaoDTO operacaoDTO) {
 
-        br.com.pueyo.android.mcao.dto.operacoes.CompraVista c = (br.com.pueyo.android.mcao.dto.operacoes.CompraVista) operacaoDTO;
+        if(operacaoDTO instanceof br.com.pueyo.android.mcao.dto.operacoes.CompraVista){
+            br.com.pueyo.android.mcao.dto.operacoes.CompraVista c = ( br.com.pueyo.android.mcao.dto.operacoes.CompraVista) operacaoDTO;
 
-        CompraVista compraVista = new CompraVista();
+            CompraVista compraVista = new CompraVista();
 
-        Titulo titulo = new Titulo();
-        titulo.setCodigoBovespa(operacaoDTO.getCodigo());
-        compraVista.setTitulo(titulo);
+            Titulo titulo = new Titulo();
+            titulo.setCodigoBovespa(operacaoDTO.getCodigo());
+            compraVista.setTitulo(titulo);
 
-        compraVista.setTaxas(new BigDecimal(c.getTaxas()));
-        compraVista.setDataTransacao(c.getData());
-        compraVista.setQuantidade(new BigInteger(c.getQuantidade().toString()));
-        compraVista.setValorUnitario(new BigDecimal(c.getValorUnitario()));
+            compraVista.setTaxas(new BigDecimal(c.getTaxas()));
+            compraVista.setDataTransacao(c.getData());
+            compraVista.setQuantidade(new BigInteger(c.getQuantidade().toString()));
+            compraVista.setValorUnitario(new BigDecimal(c.getValorUnitario()));
 
-        CompraFactory.getCompraVistaBO().enviarCompraVista(compraVista);
+            CompraFactory.getCompraVistaBO().enviarCompraVista(compraVista);
+
+        }else if(operacaoDTO instanceof VendaVista){
+            VendaVista v = (VendaVista) operacaoDTO;
+
+
+        }
+
+
 
 //        Log.w(TAG, operacaoDTO.toString());
 

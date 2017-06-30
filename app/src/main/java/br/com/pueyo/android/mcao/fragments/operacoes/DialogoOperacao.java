@@ -10,10 +10,12 @@ import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
+import java.math.BigInteger;
+
 import br.com.pueyo.android.mcao.R;
-import br.com.pueyo.android.mcao.dto.operacoes.CompraVista;
 import br.com.pueyo.android.mcao.dto.operacoes.OperacaoDTO;
 import br.com.pueyo.android.mcao.listeners.DialogoNotificavel;
 
@@ -39,8 +41,15 @@ public class DialogoOperacao <T extends OperacaoDTO>  extends DialogFragment {
 
 
         String codAcao = null;
+        BigInteger quantidade = null;
         if(extras != null){
             codAcao = extras.getString(getResources().getString(R.string.param_cod_acao));
+            Object o = extras.get(getResources().getString(R.string.param_qtde_operacao));
+
+            if(o instanceof BigInteger){
+                quantidade = (BigInteger) o;
+            }
+
         }
 
 //        String codAcao = getResources().getString(R.string.param_cod_acao);
@@ -72,8 +81,12 @@ public class DialogoOperacao <T extends OperacaoDTO>  extends DialogFragment {
 
         dialogView = inflater.inflate(layout,null);
         TextView campoCodigo = (TextView) dialogView.findViewById(R.id.cmp_codigo_value);
+        EditText campoQuantidade = (EditText) dialogView.findViewById(R.id.cmp_qtde_value);
         if(campoCodigo != null){
             campoCodigo.setText(codAcao);
+        }
+        if(campoQuantidade != null){
+            campoQuantidade.setText(quantidade.toString());
         }
         b.setView(dialogView);
 

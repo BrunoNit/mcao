@@ -17,6 +17,8 @@ import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import java.math.BigInteger;
+
 import br.com.pueyo.android.mcao.DetalhesAcaoActivity;
 import br.com.pueyo.android.mcao.builder.CarteiraBuilder;
 import br.com.pueyo.android.mcao.R;
@@ -24,6 +26,7 @@ import br.com.pueyo.android.mcao.adapters.CarteiraAdapter;
 import br.com.pueyo.android.mcao.decorators.DividerItemDecoration;
 import br.com.pueyo.android.mcao.dto.CardCarteiraAcaoDTO;
 import br.com.pueyo.android.mcao.listeners.RecyclerItemClickListener;
+import br.com.pueyo.android.mcas.bussiness.bos.TituloBO;
 
 /**
  * Created by 07669751770 on 16/06/17.
@@ -98,7 +101,10 @@ public class FragmentoCarteira extends Fragment {
                 Intent i = new Intent(getActivity(),DetalhesAcaoActivity.class);
                 TextView tv = (TextView) view.findViewById(R.id.codAcao);
                 String codAcao = getResources().getString(R.string.param_cod_acao);
+                String quantidadeTitulo = getResources().getString(R.string.param_qtde_operacao);
                 i.putExtra(codAcao,tv.getText());
+                BigInteger quantidadeTituloEmCarteira = new TituloBO().buscarQuantidadeTotalTitulo(codAcao);
+                i.putExtra(quantidadeTitulo,quantidadeTituloEmCarteira);
                 startActivity(i);
 
             }

@@ -11,7 +11,7 @@ import br.com.pueyo.android.mcao.dto.TipoOperacao;
  * Created by 07669751770 on 30/06/17.
  */
 
-public class CompraVista extends OperacaoVista {
+public class VendaVista  extends OperacaoVista {
 
 
 
@@ -31,11 +31,12 @@ public class CompraVista extends OperacaoVista {
         this.setCotacao(converteDouble(edtCotacao.getText().toString()));
         this.setTaxas(converteDouble(edtTaxas.getText().toString()));
         this.setValor(getQuantidade() * getCotacao());
-        this.setTipo(TipoOperacao.COMPRA);
+        this.setTipo(TipoOperacao.VENDA);
         this.setValorUnitario(getCotacao());
 
         return this;
     }
+
 
     @Override
     public double getValorBruto() {
@@ -45,7 +46,7 @@ public class CompraVista extends OperacaoVista {
 
         double valorLiquido = valorUnitario * quantidade;
 
-        return valorLiquido + this.getTaxas();
+        return valorLiquido - this.getTaxas();
 
     }
 }

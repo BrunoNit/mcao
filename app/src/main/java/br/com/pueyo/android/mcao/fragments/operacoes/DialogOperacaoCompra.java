@@ -13,7 +13,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import br.com.pueyo.android.mcao.R;
-import br.com.pueyo.android.mcao.dto.operacoes.CompraVista;
+import br.com.pueyo.android.mcao.dto.operacoes.OperacaoVista;
 import br.com.pueyo.android.mcao.listeners.DialogoNotificavel;
 
 
@@ -48,8 +48,8 @@ public class DialogOperacaoCompra extends DialogFragment{
                 new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        CompraVista compraVista = (CompraVista) new CompraVista().gerarOperacaoFromView(dialogView);
-                                        listener.onDialogPositiveClick(DialogOperacaoCompra.this, compraVista);
+                                        OperacaoVista operacaoVista = (OperacaoVista) new OperacaoVista().gerarOperacaoFromView(dialogView);
+                                        listener.onDialogPositiveClick(DialogOperacaoCompra.this, operacaoVista);
                                         dialog.cancel();
                                     }
                             }).setNegativeButton(R.string.btn_cancelar,
